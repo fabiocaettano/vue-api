@@ -1,24 +1,20 @@
-# clien-vue-2
+# client-vue-2
 
-## Project setup
-```
-npm install
-```
+## Descrição do Projeto
+O projeto tem como base a live do Coding Garden.
+Onde foi desenvolvido uma aplicação do lado do cliente,
+com Vue 2 + Composition API.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Link do video [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Compiles and minifies for production
+### Criar o Projeto
 ```
-npm run build
+vue create client-vue-2
 ```
 
-### Lints and fixes files
+### Dependências
 ```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+npm i @vue/compostion-api
+npm i @u3u/vue-hooks
+npm install bulma
+``

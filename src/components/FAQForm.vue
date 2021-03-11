@@ -1,17 +1,18 @@
 <template>
   <div>
-    <form @submit.prevent="submitForm">      
+    <form @submit.prevent="submitForm">  
+        {{ faq }}    
       <div class="field">
         <label class="label">Question</label>
         <div class="control">
-          <input v-model="faq.question" class="input" type="text" name="faq.question" placeholder="Question" required/>
+          <input v-model="faq.question.value" class="input" type="text" name="question" placeholder="Question" required/>
         </div>
       </div>
 
       <div class="field">
         <label class="label">Answer</label>
         <div class="control">
-          <textarea v-model="faq.answer" class="textarea" rows="4" name="faq.answer" placeholder="Answer" required/>
+          <textarea v-model="faq.answer.value" class="textarea" rows="4" name="answer" placeholder="Answer" required/>
         </div>
       </div>
 
@@ -24,6 +25,7 @@
 
 <script>   
   export default{  
-    props : [ 'submitForm' , 'faq']
+    props : [ 'submitForm' , 'faq'],
+    
   };
 </script>

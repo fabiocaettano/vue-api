@@ -48,8 +48,8 @@
 
       return {        
         faq:{
-          question : "",
-          answer : ""
+          question,
+          answer
         }, 
         CreateFaq       
       };

@@ -14,7 +14,8 @@
             {{ faq.answer }}            
         </div>
 
-        <button @click="removeFaq(faq.id)" class="button is-danger">Delete</button>
+        <button @click="removeFaq(faq.id)" class="button is-danger">Excuir</button>
+        <button @click="alteraFaq(faq.id)" class="button is-warning">Alterar</button>
 
     </div>    
 </div>
@@ -23,11 +24,14 @@
 <script>
 
 import { ref } from '@vue/composition-api'
+import { useRouter } from '@u3u/vue-hooks'  
 
 export default{    
     setup(){        
 
         const faqs = ref({});
+
+        const { router } = useRouter();
         
         const API_URL = 'http://localhost:3000/faq';
         
@@ -50,9 +54,19 @@ export default{
 
         getFaqs();
 
+        async function alteraFaq(id){
+            router.push({
+                name: 'update',
+                params:{
+                    id: id
+                }
+            })
+        }
+
         return {            
             faqs,
-            removeFaq
+            removeFaq,
+            alteraFaq
         }
     },
 };

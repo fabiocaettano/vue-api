@@ -29,11 +29,5 @@ Aplicativo Insomnia para testar as requisições de API
 Backend
 
 ### Ajustes Necessários
-Tentei realizar o projeto com Vue3, mas devido alguns problemas que começaram
-a ocorrer devido @vue/composition-api, retornei o projeto para Vue2. 
-
-De inicio ao utilizar a diretiva v-model, configurei na tag da seguinte forma 
-v-model="objeto.paramento", e com isso os valores digitados no formulário não populavam no banco.
-Para corrigir fiz a seguinte alteração na tag html: v-model="objeto.paramento.value"
 
 

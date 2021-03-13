@@ -23,27 +23,17 @@
 
 <script>
 
-import { ref } from '@vue/composition-api'
 import { useRouter } from '@u3u/vue-hooks'  
+import useFaqs from '../hooks/useFaqs'
+import API_URL from '../API_URL'
 
 export default{    
+
     setup(){        
 
-        const faqs = ref({});
-
         const { router } = useRouter();
+        const { faqs, getFaqs } = useFaqs();
         
-        const API_URL = 'http://localhost:3000/faq';
-        
-        async function getFaqs(){
-
-            const response = await fetch(`${API_URL}/retornaFaqs`);            
-            
-            const json = await response.json();           
-            
-            faqs.value = json;            
-        }
-
         async function removeFaq(id){
             await fetch(`${API_URL}/excluirFaq/${id}`,{
                 method: 'DELETE',

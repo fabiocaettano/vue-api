@@ -1,8 +1,12 @@
 <template>
   <FAQForm 
     :faq="faq"
-    :submitForm="CreateFaq"
-  />
+    :submitForm="inserirFaq"
+  >
+  <template slot="button">
+    Create
+  </template>
+  </FAQForm>  
 </template>
 
 <script>    
@@ -15,14 +19,16 @@
     components : {
       FAQForm
     },
-    setup(){      
+    setup(){            
       const question = ref('');
       const answer = ref('');
       const { router } = useRouter();
 
       const API_URL = 'http://localhost:3000/faq/incluirFaq';
+      
+      
         
-      async function CreateFaq(){
+      async function inserirFaq(){
             
             const response = await fetch(API_URL,{
               method: 'POST',
@@ -47,11 +53,12 @@
       }
 
       return {        
-        faq:{
+        inserirFaq,               
+        faq:{                    
+          transaction: 'I',
           question,
           answer
-        }, 
-        CreateFaq       
+        },        
       };
     }
     

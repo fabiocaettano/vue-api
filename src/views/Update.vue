@@ -1,36 +1,63 @@
 <template>
-  <FAQForm2
+  <FAQForm        
     :faq="faq"
-    :submitForm="UpdateFaq"
-  />
+    :submitForm="alterarFaq"
+   >
+  <template slot="button">
+    Update
+  </template>
+  </FAQForm>  
 </template>
 
 <script>    
-  import FAQForm2 from '@/components/FAQForm2.vue'
+  import FAQForm from '@/components/FAQForm.vue'
   import { ref } from '@vue/composition-api'
   import { useRouter } from '@u3u/vue-hooks'  
-  
+
 
   export default{  
     components : {
-      FAQForm2
+      FAQForm
     },
-    setup(){      
+    setup(){           
       
       const { router , route } = useRouter();
+      
+      const { id } = route.value.params;                
 
-      const faq = ref({
-        question: '',
+      const faq = ref({        
+        transaction : '',
+        question : '',
         answer: ''
-      });
+      })      
+      
+      const API_URL = 'http://localhost:3000/faq';            
+      
 
-      const API_URL = 'http://localhost:3000/faq/alterarFaq';
+      async function getFaq(id){
+      
+        const response = await fetch(`${API_URL}/retornaFaq/${id}`,{
+          method: 'GET'
+        });
+
+        const json = await response.json();               
         
-      async function UpdateFaq(){
+        var map = new Map(Object.entries(json));
+        
+        map.forEach(element => {
+          faq.value.transaction = element.transaction;
+          faq.value.question = element.question;
+          faq.value.answer = element.answer
+        });
+
+        
+
+      }      
+
+      async function alterarFaq(){                       
+
             
-            const { id } = route.value.params;    
-            
-            const response = await fetch(`${API_URL}/${id}`,{
+            const response = await fetch(`${API_URL}/alterarFaq/${id}`,{
               method: 'PUT',
               headers:{
                 'content-type':'application/json'                
@@ -52,6 +79,10 @@
             }
       }
 
+      getFaq(id);
+
+
+
       /*function getCurrentFaq(){
         
         console.log(id);
@@ -59,9 +90,9 @@
 
       getCurrentFaq();*/
 
-      return {        
-        faq, 
-        UpdateFaq       
+      return {                        
+        alterarFaq,               
+        faq,                 
       };
     }
     

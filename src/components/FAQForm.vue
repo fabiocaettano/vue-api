@@ -31,7 +31,7 @@
 
 <script>   
   export default{  
-    name: "FAQForm",
+    name: "FaqForm",
     props : [ 'submitForm' , 'faq'],
     data(){
       return{        

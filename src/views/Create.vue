@@ -1,23 +1,23 @@
 <template>
-  <FAQForm 
+  <FaqForm 
     :faq="faq"
     :submitForm="inserirFaq"
   >
   <template slot="button">
     Create
   </template>
-  </FAQForm>  
+  </FaqForm>  
 </template>
 
 <script>    
-  import FAQForm from '@/components/FAQForm.vue'
+  import FaqForm from '@/components/FaqForm.vue'
   import { ref } from '@vue/composition-api'
   import { useRouter } from '@u3u/vue-hooks'  
   
 
   export default{  
     components : {
-      FAQForm
+      FaqForm
     },
     setup(){            
       const question = ref('');
